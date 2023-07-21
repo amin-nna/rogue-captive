@@ -35,39 +35,172 @@ if (!empty($_POST)) {
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the Raspberry Pi's portal</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-<form action="index.php" method="post">
-    <h1>Select a Network</h1>
-    <h2>Existing Networks:</h2>
-    <ul>
-        <?php
-        foreach ($networks as $network => $password) {
-            echo "<li>" . htmlspecialchars($network) . "</li>";
+    <head>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In - Stay Greenville</title>
+
+    <style>
+        body {
+        background-image: url(https://www.simplifi.io/wp-content/uploads/2021/01/StayGreenville_BG_web.jpg);
+        background-position: center;
+        font-family: 'Ubuntu', sans-serif;
         }
-        ?>
-    </ul>
-    <input type="text" name="existing_network" placeholder="Enter existing network name">
-    <button type="submit" name="join_existing">Join Existing Network</button>
 
-    <h2>Join New Network:</h2>
-    <input type="text" name="networkname" placeholder="Network name">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit" name="join_new">OK</button>
+        .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: auto;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+        }
 
-    <p class="warning"><?php echo !empty($err) ? htmlspecialchars($err) : "&nbsp;"; ?></p>
-</form>
-<script>
-    // Corrected the script to set focus on the input element with the name "existing_network"
-    document.onload = function () {
-        document.getElementsByName("existing_network")[0].focus();
-    };
-</script>
-</body>
+        .sign {
+        padding-top: 40px;
+        color: #5da854;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 22px;
+        }
+
+        .title {
+        color: #5da854;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+        margin-top: 5px;
+        }
+
+        .logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        }
+
+        .un {
+        width: 76%;
+        color: rgb(38, 50, 56);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(136, 126, 126, 0.04);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        margin-bottom: 50px;
+        margin-left: 46px;
+        margin-bottom: 27px;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        }
+
+        form.form1 {
+        padding-top: 40px;
+        }
+
+        .pass {
+        width: 76%;
+        color: rgb(38, 50, 56);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(136, 126, 126, 0.04);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        margin-bottom: 50px;
+        margin-left: 46px;
+        text-align: center;
+        margin-bottom: 27px;
+        font-family: 'Ubuntu', sans-serif;
+        }
+
+
+        .un:focus,
+        .pass:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+
+        }
+
+        .submit {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background-color: #5da854;
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 14px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        }
+
+        .forgot {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #E1BEE7;
+        padding-top: 15px;
+        padding-bottom: 40px;
+        }
+
+        a {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #91989e;
+        text-decoration: none
+        }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="main">
+        <p class="sign" align="center">Raspberry Pi's Portal</p>
+        <img class="logo" align="center" src="logo-opndeved.png" alt="sglogo">
+
+        <form class="form1" action="index.php" method="post">
+        <h2>Existing Networks</h2>
+        <ul>
+            <?php
+            foreach ($networks as $network => $password) {
+                echo "<li>" . htmlspecialchars($network) . "</li>";
+            }
+            ?>
+        </ul>
+        <input type="text" name="existing_network" placeholder="Enter existing network name">
+        <button type="submit" name="join_existing">Join Existing Network</button>
+
+        <h2>Join New Network</h2>
+        
+        
+        <p class="warning"><?php echo !empty($err) ? htmlspecialchars($err) : "&nbsp;"; ?></p>
+    </form>
+    <form class="form1">
+        <input class="un " type="text" align="center" placeholder="Username">
+        <input class="pass" type="password" align="center" placeholder="Password">
+        <a class="submit" align="center">Join</a>
+    </form>
+
+    <script>
+        // Corrected the script to set focus on the input element with the name "existing_network"
+        document.onload = function () {
+            document.getElementsByName("existing_network")[0].focus();
+        };
+    </script>
+
+
+
+    </body>
+
 </html>
-
