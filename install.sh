@@ -101,11 +101,9 @@ a2enconf override
 a2enmod rewrite
 
 
-echo "Rogue captive portal installed. Reboot to execute."
-exit 0
-
 
 
 echo "Installation completed successfully!"
 echo "Please reboot your Raspberry Pi to start using the hotspot."
 
+exit 0
